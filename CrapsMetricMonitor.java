@@ -8,7 +8,7 @@ public class CrapsMetricMonitor{
   public int getGamesLost(){ return gamesLost; }
   public int getMaxRolls(){ return maxRolls; }
   public int getNaturalCount(){ return naturalCount; }
-  public int getCrapsCount(){ return crapsCount; 
+  public int getCrapsCount(){ return crapsCount; }
   public int getMaxWinStreak(){ return maxWinStreak; }
   public int getMaxLoseStreak(){ return maxLoseStreak; }
   public int getMaxBalance(){ return maxBalance; }
