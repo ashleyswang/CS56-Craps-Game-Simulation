@@ -19,7 +19,7 @@ public class CrapsSimulation{
 
     // Simulation Algorithm 
     public void start() {
-	boolean x; 
+	boolean win; 
 
 	// User Input
 	System.out.print("Welcome to SimCraps! Enter your user name: ");
@@ -56,37 +56,38 @@ public class CrapsSimulation{
 	while(balance > 0) {
 	    System.out.println(name + " bets $" + betAmount);
 	    x = game.playGame();
-	    monitor.setTotalPlays();
+	    monitor.setGamesPlayed();
 
-	    if(betAmount > balance && balance > 0)
+	    if(betAmount > balance && balance > 0){
 		betAmount = balance;
-	    if(balance > monitor.getMaxBalance()) {
+
+	    }if(balance > monitor.getMaxBalance()) {
 		monitor.setMaxBalance(balance);
-		int count = monitor.getTotalPlays();
-		monitor.setGameNumBalance(count);
+		monitor.setMaxBalanceGame(monitor.getGamesPlayed());
+
+	    }if(game.getRoll() > monitor.getMaxRoll()){
+		monitor.setMaxRolls(game.getNumberOfRolls());
+
+	    }if(win){
+		winStreak++;
+		monitor.setGamesWon();
+		if(winStreak > monitor.getMaxWinStreak()){
+		    monitor.setMaxWinStreak(winStreak);
+		}
+		loseStreak = 0;
+		balance += betAmount;
+		crapsGame.resetRoll();
+	    
+	    }else if(!win){
+		loseStreak++; 
+		monitor.setGamesLost();
+		if(loseStreak > monitor.getMaxLoseStreak()){
+		    monitor.setMaxLoseStreak(loseStreak);
+		}
+		winStreak = 0;
+		balance -= betAmount;
+		crapsGame.resetRoll();
 	    }
-	    if(crapsGame.getRoll() > monitor.getMaxRoll())
-		monitor.setMaxRoll(crapsGame.getRoll());
-
-	    if(x == true) 
-		{
-		    monitor.setTotalWinnings();
-		    winStreak++;
-		    monitor.setMaxWinningStreak(winStreak);
-		    loseStreak = 0;
-		    balance += betAmount;
-		    crapsGame.resetRoll();
-		}
-
-	    else if(x == false) 
-		{
-		    monitor.setTotalLosings();
-		    loseStreak++; 
-		    monitor.setMaxLosingStreak(loseStreak);
-		    winStreak = 0;
-		    balance -= betAmount;
-		    crapsGame.resetRoll();
-		}
 	    if(balance > 0)
 		System.out.println(name + "'s balance: " + balance + ". Playing a new game...");
 	    else
@@ -97,34 +98,22 @@ public class CrapsSimulation{
 
 	monitor.printStatistics();
 
-	/*
-	 * -------------------------------------------
-	 * -------------Asking user to replay---------
-	 * -------------------------------------------
-	 */
-	boolean response = true;
-	s = new Scanner(System.in);
+	// Replay?
 	System.out.print("Replay? Enter 'y' or 'n': ");
 	String replay = s.nextLine();
 
-	while(response) {
-	    if(replay.charAt(0) == 'y') 
-		{
-		    response = false; 
-		    monitor = new CrapsMetricsMonitor();
-		    start();
-		}
-	    else if(replay.charAt(0) == 'n')
-		{
-		    System.out.println("Thanks for playing!");
-		    response = false;
-		}
-	    else 
-		{
-		    System.out.println("Please enter a valid response.");
-		    replay = s.nextLine();
-		    response = true;
-		}
+	while( true ) {
+	    if(replay.charAt(0) == 'y'){ 
+		monitor = new CrapsMetricsMonitor();
+		start();
+	    }else if(replay.charAt(0) == 'n'){
+		System.out.println("Thanks for playing!");
+		break;
+	    }else {
+		System.out.println("Please enter a valid response.");
+		replay = s.nextLine();
+		response = true;
+	    }
 	}
 	s.close();
     }
