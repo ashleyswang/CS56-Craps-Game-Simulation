@@ -4,7 +4,7 @@ public class CrapsGame{
     private CrapsMetricMonitor monitor;
 
     // Constructor
-    public CrapsGame(CrapsMetricsMonitor monitor) 
+    public CrapsGame(CrapsMetricMonitor monitor) 
     {
 	this.monitor = monitor; 
     }
