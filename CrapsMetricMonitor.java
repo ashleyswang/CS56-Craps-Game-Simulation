@@ -34,7 +34,7 @@ public class CrapsMetricMonitor{
     public void setGamesLost(){ gamesLost++; }
     public void setMaxRolls(int maxRolls){ this.maxRolls = maxRolls; }
     public void setNaturalCount(){ naturalCount++; }
-    public void setCrapsCount(){ crapsCount;++ }
+    public void setCrapsCount(){ crapsCount++; }
     public void setMaxWinStreak(int maxWinStreak){ this.maxWinStreak = maxWinStreak; }
     public void setMaxLoseStreak(int maxLoseStreak){ this.maxLoseStreak = maxLoseStreak; }
     public void setMaxBalance(int maxBalance){ this.maxBalance = maxBalance; }
