@@ -13,7 +13,7 @@ public class CrapsSimulation{
     
     // Constructor
     public CrapsSimulation() {
-	monitor = new CrapsMetricsMonitor();
+	monitor = new CrapsMetricMonitor();
 	game = new CrapsGame(monitor);
 	winStreak = 0;
 	loseStreak = 0;
@@ -69,7 +69,7 @@ public class CrapsSimulation{
 		monitor.setMaxBalanceGame(monitor.getGamesPlayed());
 
 	    }if(game.getNumOfRolls() > monitor.getMaxRolls()){
-		monitor.setMaxRolls(game.getNumberOfRolls());
+		monitor.setMaxRolls(game.getNumOfRolls());
 
 	    }if(win){
 		winStreak++;
@@ -79,7 +79,7 @@ public class CrapsSimulation{
 		}
 		loseStreak = 0;
 		balance += betAmount;
-		game.resetRolls();
+		game.resetNumOfRolls();
 	    
 	    }else if(!win){
 		loseStreak++; 
@@ -89,7 +89,7 @@ public class CrapsSimulation{
 		}
 		winStreak = 0;
 		balance -= betAmount;
-		game.resetRolls();
+		game.resetNumOfRolls();
 	    }
 	    if(balance > 0)
 		System.out.println(name + "'s balance: " + balance + ". Playing a new game...");
