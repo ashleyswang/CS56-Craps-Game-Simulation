@@ -1,0 +1,3 @@
+public class CrapsSimulation{
+
+    private CrapsGame game = new CrapsGame();

@@ -29,12 +29,12 @@ public class CrapsMetricMonitor{
     public int getMaxBalanceGame(){ return maxBalanceGame; }
     
   // Modifiers
-    public void setGamesPlayed(){ gamesPlayed++; }
-    public void setGamesWon(){ gamesWon++; }
-    public void setGamesLost(){ gamesLost++; }
+    public void setGamesPlayed(int gamesPlayed){ this.gamesPlayed = gamesPlayed; }
+    public void setGamesWon(int gamesWon){ this.gamesWon = gamesWon; }
+    public void setGamesLost(int gamesLost){ this.gamesLost = gamesLost; }
     public void setMaxRolls(int maxRolls){ this.maxRolls = maxRolls; }
-    public void setNaturalCount(){ naturalCount++; }
-    public void setCrapsCount(){ crapsCount;++ }
+    public void setNaturalCount(int naturalCount){ this.naturalCount = naturalCount; }
+    public void setCrapsCount(int crapsCount){ this.crapsCount = crapsCount; }
     public void setMaxWinStreak(int maxWinStreak){ this.maxWinStreak = maxWinStreak; }
     public void setMaxLoseStreak(int maxLoseStreak){ this.maxLoseStreak = maxLoseStreak; }
     public void setMaxBalance(int maxBalance){ this.maxBalance = maxBalance; }
