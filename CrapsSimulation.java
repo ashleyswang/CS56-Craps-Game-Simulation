@@ -54,7 +54,7 @@ public class CrapsSimulation{
 
 	// Start Game Play
 	monitor.setMaxBalance(balance);
-	monitor.setGameNumBalance(1);
+	monitor.setMaxBalanceGame(1);
 
 	while(balance > 0) {
 	    System.out.println(name + " bets $" + betAmount);
