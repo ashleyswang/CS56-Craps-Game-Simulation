@@ -44,7 +44,7 @@ public class CrapsSimulation{
 	    balance = s.nextInt();
 	} 
 
-	System.out.print("Enter the bet amount between $1 and $" + balance + ":");
+	System.out.print("Enter the bet amount between $1 and $" + balance + ": ");
 	betAmount = s.nextInt();
 
 	while(betAmount > balance || betAmount < 1) {
@@ -102,16 +102,19 @@ public class CrapsSimulation{
 	monitor.printStatistics();
 
 	// Replay?
+	boolean response = true;
 	System.out.print("Replay? Enter 'y' or 'n': ");
-	String replay = s.nextLine();
+	String replay = s.next();
 
-	while( true ) {
-	    if(replay.charAt(0) == 'y'){ 
-		monitor = new CrapsMetricMonitor();
-		start();
+	while( response ) {
+	    if(replay.charAt(0) == 'y'){
+		response = false;
+		CrapsSimulation simulation = new CrapsSimulation();
+		simulation.start();
 	    }else if(replay.charAt(0) == 'n'){
 		System.out.println("Thanks for playing!");
-		break;
+		response = false;
+
 	    }else {
 		System.out.println("Please enter a valid response.");
 		replay = s.nextLine();

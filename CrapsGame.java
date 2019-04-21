@@ -45,6 +45,6 @@ public class CrapsGame{
 		return false; 
 	    }
 	}
+	return true;
     }
-    return;
 }

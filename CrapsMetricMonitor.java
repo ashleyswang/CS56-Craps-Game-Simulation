@@ -51,8 +51,8 @@ public class CrapsMetricMonitor{
 	System.out.println("Maximum Rolls in a single game: " + maxRolls);
 	System.out.println("Natural Count: " + naturalCount);
 	System.out.println("Craps Count: " + crapsCount);
-	System.out.println("Maximum Winning Streak" + maxWinStreak);
-	System.out.println("Maximum Loosing Streak" + maxLoseStreak);
+	System.out.println("Maximum Winning Streak: " + maxWinStreak);
+	System.out.println("Maximum Loosing Streak: " + maxLoseStreak);
 	System.out.println("Maximum balance: " + maxBalance + " during game " + maxBalanceGame);
     }
     
