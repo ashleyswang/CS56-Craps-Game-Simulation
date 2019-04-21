@@ -117,7 +117,7 @@ public class CrapsSimulation{
 
 	    }else {
 		System.out.println("Please enter a valid response.");
-		replay = s.nextLine();
+		replay = s.next();
 		//response = true;
 	    }
 	}
