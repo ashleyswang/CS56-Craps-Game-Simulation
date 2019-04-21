@@ -23,7 +23,6 @@ public class CrapsSimulation{
     // Simulation Algorithm 
     public void start() {
 	boolean win; 
-
 	// User Input
 	System.out.print("Welcome to SimCraps! Enter your user name: ");
 	name = s.nextLine();
@@ -56,15 +55,25 @@ public class CrapsSimulation{
 	monitor.setMaxBalance(balance);
 	monitor.setMaxBalanceGame(1);
 
+	int originalBet = betAmount;
+
 	while(balance > 0) {
-	    System.out.println(name + " bets $" + betAmount);
-	    win = game.playGame();
+	    //win = game.playGame();
 	    monitor.setGamesPlayed();
 
 	    if(betAmount > balance && balance > 0){
 		betAmount = balance;
 
-	    }if(balance > monitor.getMaxBalance()) {
+	    } if (originalBet > betAmount && balance > 0 && balance > betAmount) {
+		if (originalBet >= balance)
+		    betAmount = balance;
+		else
+		    betAmount = originalBet;
+	    }
+	    System.out.println(name + " bets $" + betAmount); 
+	    win = game.playGame();
+
+	    if(balance > monitor.getMaxBalance()) {
 		monitor.setMaxBalance(balance);
 		monitor.setMaxBalanceGame(monitor.getGamesPlayed());
 
@@ -91,9 +100,10 @@ public class CrapsSimulation{
 		balance -= betAmount;
 		game.resetNumOfRolls();
 	    }
-	    if(balance > 0)
+	    if(balance > 0){
 		System.out.println(name + "'s balance: " + balance + ". Playing a new game...");
-	    else
+		//System.out.println(name + " bets $" + betAmount);
+	    }else
 		System.out.println(name + "'s balance: " + balance + ". End of game");
 
 
