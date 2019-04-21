@@ -21,12 +21,12 @@ public class CrapsGame{
 	numOfRolls++;
 	System.out.println("Rolled a " + roll);
 
-	if(sum == 7 || sum == 11){
+	if(roll == 7 || roll == 11){
 	    System.out.println("*****Natural! You win!*****");
 	    monitor.setNaturalCount();
 	    return true;
 	
-	} else if(sum == 2 || sum == 3 || sum == 12){
+	} else if(roll == 2 || roll == 3 || roll == 12){
 	    System.out.println("*****Craps! You loose.*****");
 	    monitor.setCrapsCount();
 	    return false; 
