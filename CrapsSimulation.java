@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class CrapsSimulation{
 
     private CrapsGame game;
+    private CrapsMetricMonitor monitor;
     private String name; 
     private int balance; 
     private int betAmount; 
@@ -13,7 +14,7 @@ public class CrapsSimulation{
     // Constructor
     public CrapsSimulation() {
 	monitor = new CrapsMetricsMonitor();
-	crapsGame = new CrapsGame(monitor);
+	game = new CrapsGame(monitor);
 	winStreak = 0;
 	loseStreak = 0;
 	s = new Scanner(System.in);
@@ -57,7 +58,7 @@ public class CrapsSimulation{
 
 	while(balance > 0) {
 	    System.out.println(name + " bets $" + betAmount);
-	    x = game.playGame();
+	    win = game.playGame();
 	    monitor.setGamesPlayed();
 
 	    if(betAmount > balance && balance > 0){
@@ -78,7 +79,7 @@ public class CrapsSimulation{
 		}
 		loseStreak = 0;
 		balance += betAmount;
-		crapsGame.resetRoll();
+		game.resetRoll();
 	    
 	    }else if(!win){
 		loseStreak++; 
@@ -88,7 +89,7 @@ public class CrapsSimulation{
 		}
 		winStreak = 0;
 		balance -= betAmount;
-		crapsGame.resetRoll();
+		game.resetRoll();
 	    }
 	    if(balance > 0)
 		System.out.println(name + "'s balance: " + balance + ". Playing a new game...");
@@ -114,7 +115,7 @@ public class CrapsSimulation{
 	    }else {
 		System.out.println("Please enter a valid response.");
 		replay = s.nextLine();
-		response = true;
+		//response = true;
 	    }
 	}
 	s.close();
