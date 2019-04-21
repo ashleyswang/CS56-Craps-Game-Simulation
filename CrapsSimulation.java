@@ -1,3 +1,5 @@
+java.util.Scanner;
+
 public class CrapsSimulation{
 
     private CrapsGame game;
